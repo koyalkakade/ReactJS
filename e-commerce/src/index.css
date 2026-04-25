@@ -1,0 +1,80 @@
+.card {
+    transition: all 0.3s ease;
+    padding: 10px;
+    /* Define default state */
+    border-image: linear-gradient(to right, #ff006e, #8338ec) 1;
+}
+
+.card:hover {
+    border: 3px solid transparent;
+    border-image: linear-gradient(to right, #ff006e, #8338ec, #3a86ff, #00f5d4) 1;
+    transform: scale(1.05);
+    background-color: rgb(244, 245, 246);
+}
+
+.leftIcon {
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 105px;
+    border: none;
+    background-color: aliceblue;
+}
+
+.rightIcon {
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 255px;
+    border: none;
+    background-color: aliceblue;
+}
+
+.slider {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    font-size: 20px;
+    font-weight: 400;
+    width: 340px;
+    margin-left: 200px;
+}
+
+.slider-container {
+    display: flex;
+    gap: 20px;
+    margin-top: 5px;
+    background-color: aliceblue;
+    padding: 10px;
+}
+
+/* background-image: linear-gradient(45deg, #401078, transparent);    */
+
+/* .badge {
+        background-image: linear-gradient(45deg, #8d71e7, transparent);
+    background-color: rgb(70 166 195) !important;
+} */
+
+.grid-container {
+    display: grid;
+    /* Creates 2 equal columns */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-right: 40px;
+    margin-left: 45px;
+}
+
+.grid-container img {
+    width: 90%;
+    height: auto;
+    /* Ensures images fill their cells neatly */
+    object-fit: cover;
+    margin-left: 10px;
+}
+
+.prodDetail-Container {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.checked {
+    color: orange;
+}
+
