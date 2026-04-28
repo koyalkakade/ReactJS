@@ -1,11 +1,13 @@
 import React from 'react'
+import Navbar from './Navbar'
+import Footer from './Footer'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { FaStar } from "react-icons/fa";
 import { MdCurrencyRupee } from "react-icons/md";
 import '../index.css'
 
-const ProductDetails = () => {
+const ProductDetails = ({loggedUser}) => {
   const prodId = useParams({})
   // console.log('prod-id',prodId.ID)
 
@@ -32,8 +34,9 @@ const ProductDetails = () => {
 
   return (
     <>
+      <Navbar loggedUser={loggedUser} />
       <h4 style={{ margin: "20px", fontWeight: "bold" }}>Product Details : </h4>
-      <div className="row prodDetail-Container">
+      <div className="row prodDetail-Container" style={{height:"380px"}}>
         <div className="col-12 col-md-6 grid-container border p-3 rounded">
           <img src={products.image} alt="Description" />
           <img src={products.image} alt="Description" />
@@ -58,6 +61,7 @@ const ProductDetails = () => {
           <span className='text-secondary' >Category: {products.category}</span>
         </div>
       </div>
+      <Footer />
     </>
   )
 }

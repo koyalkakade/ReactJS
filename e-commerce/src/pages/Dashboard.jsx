@@ -13,7 +13,7 @@ const Dashboard = ({ loggedUser }) => {
       <div className="container-fluid">
         <div className="row">
           <div className="col-2 bg-secondary text-white">
-            <div style={{ position: 'sticky', top: '80px' }}>
+            <div style={{ position: 'sticky', top: '80px'}}>
               <input type='search' className='form-control mb-2' />
               <button className='btn btn-primary'>Search</button>
               <div>Filter</div>

@@ -19,7 +19,7 @@ const App = () => {
         <Route path='/' element={<LoginPage setLoggedUSer={setLoggedUSer} />}></Route>
         <Route path='/register' element={<RegisterPage />}></Route>
         <Route path='/dashboard' element={<Dashboard loggedUser={loggedUser} />}></Route>
-        <Route path='/product/:ID' element={<ProductDetails />}></Route>
+        <Route path='/product/:ID' element={<ProductDetails loggedUser={loggedUser}/>}></Route>
       </Routes>
     </BrowserRouter>
   )

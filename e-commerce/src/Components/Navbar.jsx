@@ -4,10 +4,15 @@ import { IoMdContact } from "react-icons/io";
 import { LiaSignOutAltSolid } from "react-icons/lia";
 import '../index.css'
 import { Link } from 'react-router-dom';
+import { FaToggleOff, FaToggleOn } from "react-icons/fa6"
+import { useContext } from 'react';
+import { ThemeContext } from '../Theme/ThemeProvider';
 
 const Navbar = ({ loggedUser }) => {
+    const { theme, toggleTheme } = useContext(ThemeContext)
     return (
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        <nav className={`navbar navbar-expand-lg fixed-top ${theme == 'light' ? 'bg-light' : 'bg-dark'}`}
+            data-bs-theme={`${theme == 'light' ? 'light' : 'dark'}`}>
             <div className="container-fluid">
                 <a className="navbar-brand" href="#">Savana</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,12 +28,18 @@ const Navbar = ({ loggedUser }) => {
                         </li>
 
                     </ul>
-                    <div className="d-flex">
+                    <div
+                        className={`d-flex ${theme == 'light' ? 'text-dark' : 'text-light'}`}
+                        role="search"
+                    >
                         <i className='me-3'>Welcome, {loggedUser.userName}</i>
                         <span className='me-3'><FaShoppingCart /><sup className='badge badge-pill badge-danger me-4'></sup></span>
-                           <Link className="nav-link active" aria-current="page" to="/"> <span title="Sign Out" style={{ cursor: "pointer" ,marginRight:"2px" }}>
-                                <LiaSignOutAltSolid />
-                            </span></Link>
+                        <Link className="nav-link active" aria-current="page" to="/"> <span title="Sign Out" style={{ cursor: "pointer", marginRight: "2px" }}>
+                            <LiaSignOutAltSolid />
+                        </span></Link>
+                        <button onClick={() => toggleTheme()}>
+                            {theme == "light" ? <FaToggleOff /> : <FaToggleOn />}
+                        </button>
                     </div>
                 </div>
             </div>
