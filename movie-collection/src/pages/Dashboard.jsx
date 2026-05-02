@@ -10,7 +10,7 @@ const Dashboard = () => {
             <div className="container-fluid alignItems-center">
                 <div className="row">
                     <div className="col-2"><h3 className='m-2'>Movies:</h3></div>
-                    <div className="col-10" style={{height:"450px"}}>
+                    <div className="col-10">
                         <Movies />
                     </div>
                 </div>

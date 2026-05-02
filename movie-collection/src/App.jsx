@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from './pages/Dashboard'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import MovieDetails from './components/MovieDetails'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -17,6 +18,7 @@ function App() {
 <Router>
   <Routes>
             <Route path='/' element={<Dashboard />}></Route>
+             <Route path='/moreInfo/:id' element={<MovieDetails />}></Route>
   </Routes>
 </Router>
       
