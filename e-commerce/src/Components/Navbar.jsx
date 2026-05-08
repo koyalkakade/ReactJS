@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useReducer } from 'react'
 import { FaHome, FaShoppingCart } from "react-icons/fa";
 import { IoMdContact } from "react-icons/io";
 import { LiaSignOutAltSolid } from "react-icons/lia";
@@ -7,9 +7,14 @@ import { Link } from 'react-router-dom';
 import { FaToggleOff, FaToggleOn } from "react-icons/fa6"
 import { useContext } from 'react';
 import { ThemeContext } from '../Theme/ThemeProvider';
+import { cartInitialState, cartReducer } from '../Components/cartReducer/cartReducer.js'
+import { CartContextAPI } from './cartReducer/CartProvider';
 
 const Navbar = ({ loggedUser }) => {
     const { theme, toggleTheme } = useContext(ThemeContext)
+
+    const { cartState } = useContext(CartContextAPI)
+
     return (
         <nav className={`navbar navbar-expand-lg fixed-top ${theme == 'light' ? 'bg-light' : 'bg-dark'}`}
             data-bs-theme={`${theme == 'light' ? 'light' : 'dark'}`}>
@@ -33,7 +38,9 @@ const Navbar = ({ loggedUser }) => {
                         role="search"
                     >
                         <i className='me-3'>Welcome, {loggedUser.userName}</i>
-                        <span className='me-3'><FaShoppingCart /><sup className='badge badge-pill badge-danger me-4'></sup></span>
+                        <span className='me-3'><FaShoppingCart /><sup className={`badge badge-pill badge-danger me-4 ${theme == 'light' ? 'text-dark' : 'text-light'} `}>
+                              {cartState?.cartLength}
+                        </sup></span>
                         <Link className="nav-link active" aria-current="page" to="/"> <span title="Sign Out" style={{ cursor: "pointer", marginRight: "2px" }}>
                             <LiaSignOutAltSolid />
                         </span></Link>

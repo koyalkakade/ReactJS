@@ -6,6 +6,8 @@ import Dashboard from './pages/Dashboard'
 import ProductDetails from './Components/ProductDetails'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import CartPage from './pages/CartPage'
+import CartProvider from './components/cartReducer/CartProvider'
 
 const App = () => {
 
@@ -13,15 +15,18 @@ const App = () => {
 
 
   return (
+    <CartProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<LoginPage setLoggedUSer={setLoggedUSer} />}></Route>
+          <Route path='/register' element={<RegisterPage />}></Route>
+          <Route path='/dashboard' element={<Dashboard loggedUser={loggedUser} />}></Route>
+          <Route path='/product/:ID' element={<ProductDetails loggedUser={loggedUser} />}></Route>
+          <Route path='/CartPage' element={<CartPage />}></Route>
+        </Routes>
+      </BrowserRouter>
+    </CartProvider>
 
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<LoginPage setLoggedUSer={setLoggedUSer} />}></Route>
-        <Route path='/register' element={<RegisterPage />}></Route>
-        <Route path='/dashboard' element={<Dashboard loggedUser={loggedUser} />}></Route>
-        <Route path='/product/:ID' element={<ProductDetails loggedUser={loggedUser}/>}></Route>
-      </Routes>
-    </BrowserRouter>
   )
 }
 

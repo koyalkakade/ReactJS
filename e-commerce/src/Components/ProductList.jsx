@@ -1,10 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React, { useReducer } from 'react'
+import { useEffect } from 'react'
+import { useState } from 'react'
+import { cartReducer,cartInitialState } from './cartReducer/cartReducer'
 import Card from './Card'
 
 const ProductList = () => {
     const [products, setProducts] = useState([])
     const [error, setError] = useState(false)
     const [loading, setLoading] = useState(true)
+  
+//   export  const cartInitialState = {
+//         cartProducts: [],
+//         totalAmount: 0, DeliveryCharges: 100, cartLength: 0
+//     }
+
+     const [cartState, CartDispatch] = useReducer(cartReducer, cartInitialState);
 
 
     // async function fetchProducts() {
@@ -55,7 +65,10 @@ const ProductList = () => {
                     {
                         products.map((prod, i) => (
                             <div className='col' key={i}>
-                                <Card product={prod}/>
+                                <Card key={prod.id}
+                                    product={prod}
+                                    cartState={cartState}
+                                    CartDispatch={CartDispatch}/>
                                                        
                               </div>
                         ))
