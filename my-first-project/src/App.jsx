@@ -14,6 +14,7 @@ import UserDetails1 from './users/UserDetails'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import UserMoreInfo from './components/UserMoreInfo'
+import CoinRedeucer from './CoinReducer/CoinReducer'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -23,6 +24,7 @@ function App() {
   }
   return (
     <>
+    <CoinRedeucer></CoinRedeucer>
       {/* <UserDetails1 /> */}
       <Router>
         <Routes>

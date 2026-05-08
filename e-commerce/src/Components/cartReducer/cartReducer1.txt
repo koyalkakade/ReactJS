@@ -1,0 +1,65 @@
+
+ export  const cartInitialState = {
+        cartProducts: [],
+        totalAmount: 0, DeliveryCharges: 100, cartLength: 0
+    }
+    
+function calculateCart(cartPrd, delCharges) {
+    // console.log(cartPrd,'cartPrd')
+    let totalAmt = cartPrd.reduce(
+        (acc, item) => acc + item.prod_price * item.prodQuantity,
+        0
+    );
+    console.log(totalAmt)
+    totalAmt = totalAmt + delCharges
+    console.log(cartPrd, totalAmt, cartPrd.length)
+    return {
+        cartProducts: cartPrd,
+        totalAmount: totalAmt,
+        DeliveryCharges: delCharges,
+        cartLength: cartPrd.length
+    }
+}
+
+export const cartReducer = (state, action) => {
+    console.log('state', state, action)
+    switch (action.type) {
+        case 'ADD_TO_BAG':
+            const existingProduct = state.cartProducts.find(
+                item => item.prod_id === action.payload.prod_id
+            );
+            let updatedCart;
+            if (existingProduct) {
+                // If already exists → increase quantity
+                updatedCart = state.cartProducts.map(item =>
+                    item.prod_id === action.payload.prod_id
+                        ? { ...item, prodQuantity: item.prodQuantity + 1 }
+                        : item
+                );
+            } else {
+                // Add new product
+                const newPRod = { ...action.payload, prodQuantity: 1 }
+                 updatedCart = [...state.cartProducts, newPRod];
+            }
+            console.log(updatedCart)
+
+            let newState = calculateCart(updatedCart, state.DeliveryCharges);
+            console.log(newState, "newStatenewStatenewStatenewStatenewState")
+            return {
+                ...state,
+                ...newState
+            }
+
+        case 'QUANTITY_INCREASE':
+            return { state }
+        case 'QUANTITY_DECREASE':
+            return { state }
+        case 'EMPTY_BAG':
+            return {
+                cartProducts: [],
+                totalAmount: 0,
+                DeliveryCharges: 100,
+                cartLength: 0
+            }
+    }
+}
