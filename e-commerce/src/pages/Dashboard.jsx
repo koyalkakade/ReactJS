@@ -3,9 +3,15 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import ProductList from '../components/ProductList'
 import Category from '../Components/Category'
+import { useEffect } from 'react'
 
 const Dashboard = ({ loggedUser }) => {
   console.log("Dashboard", loggedUser)
+
+    useEffect(() => {
+             document.title = 'e-commerce'
+      }, [])
+
   return (
     <>
 

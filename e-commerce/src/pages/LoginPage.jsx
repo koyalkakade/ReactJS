@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast, Bounce } from 'react-toastify'
 
@@ -7,6 +8,12 @@ const LoginPage = ({setLoggedUSer}) => {
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
     const [regUser, setRegUser] = useState({})
+
+    const inputEmailRef=useRef()
+
+    useEffect(()=>{
+        inputEmailRef.current.focus()
+    },[])
 
     const navigate = useNavigate()
 
@@ -59,6 +66,7 @@ function fetchData(){
                     <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com"
                         // value="Jerry" 
                         // name={email}
+                        ref={inputEmailRef}
                         onChange={(e) => setEmail(e.target.value)}
                     />
                     <label htmlFor="floatingInput">Email address</label>
