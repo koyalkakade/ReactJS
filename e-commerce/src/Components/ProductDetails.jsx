@@ -6,12 +6,16 @@ import { useParams } from 'react-router-dom'
 import { FaStar } from "react-icons/fa";
 import { MdCurrencyRupee } from "react-icons/md";
 import '../index.css'
+import { useRef } from 'react'
+
 
 const ProductDetails = ({loggedUser}) => {
   const prodId = useParams({})
   // console.log('prod-id',prodId.ID)
 
   const [products, setProducts] = useState([])
+      const product_name = useRef('e-commerce')
+
 
   async function fetchData() {
     try {
@@ -31,6 +35,18 @@ const ProductDetails = ({loggedUser}) => {
   useEffect(() => {
     fetchData()
   }, [])
+
+ //console.log('products',products)
+
+    useEffect(() => {
+        if (products?.name){
+            product_name.current = products.name
+            document.title = product_name.current
+        }
+        else{
+           document.title = product_name.current
+        }
+    }, [products])
 
   return (
     <>

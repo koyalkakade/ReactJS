@@ -14,7 +14,6 @@ const Navbar = ({ loggedUser }) => {
     const { theme, toggleTheme } = useContext(ThemeContext)
 
     const { cartState } = useContext(CartContextAPI)
-
     return (
         <nav className={`navbar navbar-expand-lg fixed-top ${theme == 'light' ? 'bg-light' : 'bg-dark'}`}
             data-bs-theme={`${theme == 'light' ? 'light' : 'dark'}`}>

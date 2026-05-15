@@ -1,20 +1,21 @@
 import React, { useReducer } from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { cartReducer,cartInitialState } from './cartReducer/cartReducer'
+import { cartReducer, cartInitialState } from './cartReducer/cartReducer'
 import Card from './Card'
 
 const ProductList = () => {
     const [products, setProducts] = useState([])
     const [error, setError] = useState(false)
     const [loading, setLoading] = useState(true)
-  
-//   export  const cartInitialState = {
-//         cartProducts: [],
-//         totalAmount: 0, DeliveryCharges: 100, cartLength: 0
-//     }
 
-     const [cartState, CartDispatch] = useReducer(cartReducer, cartInitialState);
+
+    //   export  const cartInitialState = {
+    //         cartProducts: [],
+    //         totalAmount: 0, DeliveryCharges: 100, cartLength: 0
+    //     }
+
+    const [cartState, CartDispatch] = useReducer(cartReducer, cartInitialState);
 
 
     // async function fetchProducts() {
@@ -53,13 +54,13 @@ const ProductList = () => {
         fetchData()
     }, [])
 
-
+   
 
     if (loading) return <p>Loading....</p>
     if (error) return <p>404 Page</p>
     return (
         <>
-            <div style={{margin:"10px",fontWeight:"bold"}}>ProductList : </div>
+            <div style={{ margin: "10px", fontWeight: "bold" }}>ProductList : </div>
             <div className="container-fluid">
                 <div className="row">
                     {
@@ -68,12 +69,12 @@ const ProductList = () => {
                                 <Card key={prod.id}
                                     product={prod}
                                     cartState={cartState}
-                                    CartDispatch={CartDispatch}/>
-                                                       
-                              </div>
+                                    CartDispatch={CartDispatch} />
+
+                            </div>
                         ))
                     }
-                   
+
                 </div>
             </div>
         </>
