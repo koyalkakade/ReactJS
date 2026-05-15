@@ -42,7 +42,7 @@ const HomePage = ({ data }) => {
     return (
         <>
             <div className="container  d-md-flex justify-content-md-end">
-                {/* <input type="datetime" onChange={(e) => console.log(e.target.value)} /> */}
+                <input type="date" onChange={(e) => console.log(e.target.value)} />
                 <Link className='btn btn-primary ms-1' to='/create'>Add New Task</Link>
             </div>
             <div className='container' style={{height:"450px"}}>
